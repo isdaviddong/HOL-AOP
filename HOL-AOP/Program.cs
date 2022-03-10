@@ -47,6 +47,7 @@ namespace HOL_AOP
 
         //計算BMI
         [ExceptionNotify(LogFileName = "log.txt")]
+        [Logging(LineNotifyToken = "___LineNotifyToken___", Message = "測試")]
         public Decimal Calculate()
         {
             Decimal result = 0;
