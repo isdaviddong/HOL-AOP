@@ -49,15 +49,15 @@ BMIProcessor BMI = new BMIProcessor();
 ```
 with
 ```
-BMIProcessor BMI = new BMIProcessor();
+BMIProcessor BMI = PolicyInjection.Create<BMIProcessor>();
 ```
 6. replace 
 ```
-public class ExceptionNotify
+public class BMIProcessor
 ```
 with
 ```
-public class ExceptionNotify : PolicyInjectionAttributeBase
+public class BMIProcessor : PolicyInjectionComponentBase
 ```
 7. replace 
 ```
