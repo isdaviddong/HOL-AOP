@@ -1,4 +1,5 @@
-﻿using System;
+﻿using isRock.Framework.AOP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace HOL_AOP
     {
         static void Main(string[] args)
         {
-            BMIProcessor BMI = new BMIProcessor();
+            BMIProcessor BMI = PolicyInjection.Create<BMIProcessor>();
             //其餘程式碼完全不變
             BMI.Height = 170;
             BMI.Weight = 70;
@@ -32,7 +33,7 @@ namespace HOL_AOP
             Console.ReadKey();
         }
     }
-    public class BMIProcessor 
+    public class BMIProcessor : PolicyInjectionComponentBase
     {
         public int Weight { get; set; }
         public int Height { get; set; }
@@ -43,8 +44,9 @@ namespace HOL_AOP
                 return Calculate();
             }
         }
- 
+
         //計算BMI
+        [ExceptionNotify(LogFileName = "log.txt")]
         public Decimal Calculate()
         {
             Decimal result = 0;
