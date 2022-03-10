@@ -51,3 +51,20 @@ with
 ```
 BMIProcessor BMI = new BMIProcessor();
 ```
+6. replace 
+```
+public class ExceptionNotify
+```
+with
+```
+public class ExceptionNotify : PolicyInjectionAttributeBase
+```
+7. replace 
+```
+public Decimal Calculate()
+```
+with
+```
+[ExceptionNotify(LogFileName = "log.txt")]
+public Decimal Calculate()
+```
